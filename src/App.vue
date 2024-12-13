@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import SynopsisDiv from './components/SynopsisDiv.vue'
+// ensure asset upload during build for dynamic src
+import trailUrl from './assets/trail.jpg'
+import ipadUrl from './assets/ipad.jpg'
+import readingUrl from './assets/reading.jpg'
+import openbookUrl from './assets/openbook.jpg'
 
 const lessons = [
   "How Can the Bible Help You?",
@@ -41,7 +46,7 @@ const lessons = [
         <main role="main" id="content" class="grid-layout--pub-sidebar grid-showLSR">
           <div class="main-wrapper">
             <figure id="articleTopRelatedImage" class="article-top-related-image textSizeIncrement dir-ltr" dir="ltr">
-              <img src="./assets/trail.jpg" />
+              <img :src="trailUrl" />
             </figure>
             <article id="article" dir="ltr" class="layout-reading layout-sidebar">
               <div class="textSizeIncrement">
@@ -50,13 +55,13 @@ const lessons = [
               <p>This textbook is designed to be used during a personal Bible study as part of our free Bible study
                 program.</p>
               <div class="toc cms-clearfix">
-                <SynopsisDiv link="#" img-src="/vue-vite/src/assets/ipad.jpg"
+                <SynopsisDiv link="#" :img-src="ipadUrl"
                   text="How to get the most out of this Bible course" />
-                <SynopsisDiv link="#" img-src="/vue-vite/src/assets/reading.jpg" text="Section 1" />
+                <SynopsisDiv link="#" :img-src="readingUrl" text="Section 1" />
                 <h2 class="pubviewsTOCSubsectionTitle">LESSONS</h2>
                 <hr>
                 <SynopsisDiv v-for="(text, index) in lessons" link="#"
-                  img-src="/vue-vite/src/assets/open book.jpg" :title="'LESSON ' + (index + 1)"
+                  :img-src="openbookUrl" :title="'LESSON ' + (index + 1)"
                   :text="text" />
               </div>
             </article>
