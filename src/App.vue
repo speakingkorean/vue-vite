@@ -34,7 +34,7 @@ const lessons = [
             </a>
           </div>
           <div class="siteNameContainer">
-            <h2 id="siteName">Seiwa</h2>
+            <h2 id="siteName">Secret Website</h2>
           </div>
         </header>
       </div>
