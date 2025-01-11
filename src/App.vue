@@ -3,9 +3,10 @@
 
 <template>
   <nav>
-    <li><RouterLink to="/">Home</RouterLink></li>
-    <li><RouterLink :to="{ name: 'demo'}">Demo</RouterLink></li>
-    <li><RouterLink :to="{ name: 'videos'}">Videos</RouterLink></li>
+    <li><RouterLink :to="{ name: 'home' }">Home</RouterLink></li>
+    <li><RouterLink :to="{ name: 'demo' }">Demo</RouterLink></li>
+    <li><RouterLink :to="{ name: 'videos' }">Search</RouterLink></li>
+    <li><RouterLink :to="{ name: 'upload' }">Upload</RouterLink></li>
   </nav>
   <main>
     <RouterView />

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import UploadVideo from '../components/UploadVideo.vue'
 import axios from "axios";
 import { ref, watchEffect } from 'vue'
 
@@ -28,7 +27,6 @@ const changeVidSrc = async (title: string) => {
 <template>
     <div class="row">
         <div class="column-left">
-            <UploadVideo />
             <div v-for="vid in vids" class="video-link">
                 <a @click="() => changeVidSrc(vid)">{{ vid }}</a>
                 <!-- <VideoLink :text="vid" /> -->
