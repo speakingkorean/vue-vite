@@ -22,7 +22,7 @@
                         <div v-show="!fileName" :class="['dropzone-wrapper', dragging ? 'drag-over' : '']"
                             @dragenter="dragging = true" @dragleave="dragging = false">
                             <div class="dropzone-description">
-                                <p>Choose an video file or drag it here</p>
+                                <p>Choose a video file or drag it here</p>
                             </div>
                             <input type="file" name="file" class="dropzone" accept="video/*" @change="selectFile">
                         </div>
@@ -38,20 +38,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import axios from "axios";
+import { ref, computed } from "vue"
+import axios from "axios"
 
-const file = ref({ name: "" });
+const emptyFile = new File([], "")
+const file = ref(emptyFile)
 const fileName = computed(() => file.value.name)
 const dragging = ref(false)
 
-function selectFile(event: any) {
-    file.value = event.target.files[0]
+function selectFile(event: Event) {
+    const fileInput = event.target as HTMLInputElement
+    if (fileInput && fileInput.files)
+        file.value = fileInput.files[0]
     // todo: multiple
 }
 
 function reset() {
-    file.value = { name: "" }
+    file.value = emptyFile
 }
 
 async function sendFile() {
@@ -163,18 +166,6 @@ async function sendFile() {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.upload-button>button:hover {
-    border-color: hsl(0, 0%, 21%);
-}
-
-.upload-button>button:active {
-    background-color: hsl(0, 0%, 96%);
-}
-
-.upload-button>button>i {
-    padding-right: 5px;
 }
 
 .upload-button>button {
